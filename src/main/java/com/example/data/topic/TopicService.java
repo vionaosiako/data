@@ -1,12 +1,17 @@
 package com.example.data.topic;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 @Service
+
 public class TopicService {
+    @Autowired
+    private TopicRepository topicRepositoty;
     private List<Topic> topics = Arrays.asList(
             new Topic("spring","spring framework","spring framework description"),
             new Topic("java","core java","java description"),
@@ -14,6 +19,9 @@ public class TopicService {
     );
 
     public List<Topic> getAllTopics(){
+        List<Topic> topics = new ArrayList<>();
+        topicRepositoty.findAll()
+        .forEach(topics::add);
         return topics;
     }
 
