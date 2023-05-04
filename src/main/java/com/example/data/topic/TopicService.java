@@ -29,7 +29,8 @@ public class TopicService {
         return topics.stream().filter(t -> t.getId().equals(id)).findFirst().get();
     }
     public void addTopic (Topic topic){
-        topics.add(topic);
+
+        topicRepositoty.save(topic);
     }
 
     public void updateTopic(String id, Topic topic){
